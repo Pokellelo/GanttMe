@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState } from "react";
+import useInfiniteScroll, {
+  ScrollDirection
+} from "react-easy-infinite-scroll-hook";
+import { createItems, loadMore } from "./lib/utils";
 
-function App() {
+import {useRef} from "react";
+export default function App() {
+  const [data, setData] = useState(createItems());
+  const [isLoading, setIsLoading] = useState(false);
+
+  const next = async (direction: ScrollDirection) => {
+    try {
+      setIsLoading(true);
+      const newData = await loadMore();
+
+      setData((prev) =>
+        direction === "up" ? [...newData, ...prev] : [...prev, ...newData]
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+   let ref = useRef<HTMLInputElement>(null)
+
+    ref = useInfiniteScroll({
+      next,
+      rowCount: data.length,
+      hasMore: { down: true }
+    });
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          WIP:  Gantt Me
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div
+        ref={ref}
+        className="List"
+        style={{
+          height: 500,
+          overflowY: "auto"
+        }}
+      >
+        {data.map((key) => (
+          <div className="Row" key={key}>
+            {key}
+          </div>
+        ))}
+      </div>
+      {isLoading && <div>Loading...</div>}
     </div>
   );
 }
-
-export default App;
