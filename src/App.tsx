@@ -11,6 +11,8 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const next = async (direction: ScrollDirection) => {
+    console.log(direction)
+
     try {
       setIsLoading(true);
       const newData = await loadMore();
@@ -35,12 +37,7 @@ export default function App() {
     <div>
       <div
         ref={ref}
-        className="List"
-        style={{
-          height: 500,
-          overflowY: "auto"
-        }}
-      >
+        className="List">
         {data.map((key) => (
           <div className="Row" key={key}>
             {key}
