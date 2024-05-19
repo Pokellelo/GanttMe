@@ -1,5 +1,5 @@
 
-const today:Date = new Date
+const today:Date = new Date()
 
 
 export const createItems = (year:number = today.getFullYear(), month:number = today.getMonth()): string[] => {
