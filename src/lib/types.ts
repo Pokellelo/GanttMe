@@ -41,3 +41,13 @@ export type ganttEvent = {
   created_at: Date
   updated_at: undefined | Date
 }
+
+
+/*For creation */
+
+export type day = {
+  number: number
+  name: string
+  idMonth: number
+}
+
