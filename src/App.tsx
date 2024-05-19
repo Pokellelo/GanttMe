@@ -39,7 +39,7 @@ export default function App() {
         ref={ref}
         className="List">
         {data.map((key) => (
-          <div className="Row" key={key}>
+          <div className="item" key={key}>
             {key}
           </div>
         ))}

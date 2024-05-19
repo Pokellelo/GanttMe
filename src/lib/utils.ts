@@ -1,9 +1,14 @@
 
-export const createItems = (length = 100): string[] =>
-  Array.from({ length }).map(() => Math.floor(Math.random() * 50).toString());
+const today:Date = new Date
 
-export const loadMore = async (length = 100): Promise<string[]> =>
-  new Promise((res) => setTimeout(() => res(createItems(length)), 100));
+
+export const createItems = (year:number = today.getFullYear(), month:number = today.getMonth()): string[] => {
+  const lastDay:number = new Date(year, month+1, 0).getDate()
+  return  Array.from( Array(lastDay).keys()).map((x) => (x+1).toString())  
+}
+
+export const loadMore = async (year?:number, month?:number): Promise<string[]> =>
+  new Promise((res) => setTimeout(() => res(createItems(year, month)), 100));
 
 
 export const capitalize = (name:string): string => {
