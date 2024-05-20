@@ -3,3 +3,9 @@ export enum Estado {
   INPROGRESS,
   COMPLETED,
 }
+
+export enum Language {
+  Spanish,
+  English,
+}
+
