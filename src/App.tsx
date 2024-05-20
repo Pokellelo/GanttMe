@@ -50,7 +50,7 @@ export default function App() {
         id="List">
         {data.map((key, index) => (
           <div className="item" key={index}>
-            {key} - {index}
+            {key}
             
             {Math.floor(Math.random()*6) > 3 ? <div className="event">Evnt</div> : ""}
 
