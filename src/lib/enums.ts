@@ -6,6 +6,6 @@ export enum Estado {
 
 export enum Language {
   Spanish,
-  English,
+  English,  
 }
 

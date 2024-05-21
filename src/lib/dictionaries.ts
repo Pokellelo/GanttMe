@@ -8,3 +8,17 @@ export const days: {
     [Language.English]: ["Sunday", "Monday", "Tuesday", "Wendsday", "Thursday", "Friday", "Saturday"],
   };
   
+
+
+  //Miselanea Traductions
+  type Words = {
+    today_is:string,
+  }
+  export const miselanea: {
+    [Language.Spanish]: Words;
+    [Language.English]: Words;
+  } = {
+    [Language.Spanish]: {today_is: "Hoy es"},
+    [Language.English]: {today_is: "Today is"},
+
+  }
