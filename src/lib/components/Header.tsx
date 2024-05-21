@@ -1,7 +1,5 @@
 import { Language } from "../enums"
-import { miselanea, days } from "../dictionaries"
-
-const today:Date = new Date()
+import { miselanea} from "../dictionaries"
 
 
 const storedLan:string | null = localStorage.getItem('language')
@@ -25,9 +23,7 @@ const changeLanguage = (val:number) => {
 const Header = () => (
   <header id="header" className=" text-white bg-indigo-800 flex">
 
-    <span className="flex-1">{ labels.today_is + " : " +
-
-    today.getFullYear() +  " - " + days[lanSelected][today.getDay()] + " " +today.getDate() + " - " + today.getMonth () } </span>
+    <span className="flex-1 text-3xl ">Gantt</span>
 
     
   <span className="flex-1 text-right">

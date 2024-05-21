@@ -16,7 +16,6 @@ export default function App() {
     if(list){
       e.deltaY === 100 ?  list.scrollLeft += 5 : list.scrollLeft -= 5
     }
-   
   });
   
   
@@ -30,6 +29,9 @@ export default function App() {
       setData((prev) =>
         direction === "right" ? [...newData, ...prev] : [...prev, ...newData]
       );
+
+      console.log(data)
+
     } finally {
       setIsLoading(false);
     }
