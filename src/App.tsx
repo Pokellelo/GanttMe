@@ -5,6 +5,8 @@ import useInfiniteScroll, {
 } from "react-easy-infinite-scroll-hook";
 import { createItems, loadMore } from "./lib/utils";
 
+import { Calendar } from "./lib/types";
+
 export default function App() {
   const [data, setData] = useState(createItems());
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +54,14 @@ export default function App() {
         id="List">
         {data.map((key, index) => (
           <div className="item" key={index}>
-            {key}
+            {key.year}
+           
+            {key.months.map((key2, index2) => (
+              <div className="item" key={index2}>
+                {key2}  
+              </div>
+            ))}
+
             
             {Math.floor(Math.random()*6) > 3 ? <div className="event">Evnt</div> : ""}
 

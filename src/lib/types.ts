@@ -40,22 +40,23 @@ export type ganttEvent = {
 
 /*For creation */
 
-export type day = {
+export type Day = {
   week: number;
   number: number;
-  name: string;
+  id_day: number;
 };
 
-export type month = {
+export type Month = {
   month: number;
-  days: day[];
+  days: Day[];
 };
 
-export type year = {
+export type Year = {
   year: number;
-  months: month[];
+  months: Month[];
 };
 
-export type calendar = {
-  years: year[];
+export type Calendar = {
+  year: number;
+  months: String[][];
 };
