@@ -15,11 +15,7 @@ export const createItems = (year:number = today.getFullYear(), month:number = to
   let days:String[] = []
 
   for(const m in months[0]){
-
-    const lastDay:number = new Date(year, +m+1, 0).getDate()
-    
-    
-    //Array.from( Array(lastDay).keys()).map((x) => (x+1).toString()) 
+    const lastDay:number = new Date(year, +m+1, 0).getDate()    
     const days_array:String[] = Array.from( Array(lastDay).keys()).map((x) => (x+1).toString());
     
     days = days.concat(days_array)
