@@ -4,9 +4,7 @@ const today:Date = new Date()
 
 
 export const createItems = (year:number = today.getFullYear(), month:number = today.getMonth()): Calendar[] => {
-  //const lastDay:number = new Date(year, month+1, 0).getDate()
-
-
+  
   const year_array:Calendar = {
     year: year,
     months: []

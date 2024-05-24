@@ -5,7 +5,6 @@ import useInfiniteScroll, {
 } from "react-easy-infinite-scroll-hook";
 import { createItems, loadMore } from "./lib/utils";
 
-import { Calendar } from "./lib/types";
 import { months } from "./lib/dictionaries";
 import { Language } from "./lib/enums";
 
@@ -70,7 +69,7 @@ export default function App() {
           <div className="month">
             {v.months.map((days, month) => (
               <div key={month + "-month"}>
-                <b>{mn[month]}</b>
+                <b className="month-name">{mn[month]}</b>
                 <div className="day-container">
                   {days.map((day, id_day) => (
                     <div className="day" key={id_day}>

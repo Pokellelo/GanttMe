@@ -56,5 +56,11 @@
   min-width: 60px;
   border: 1px grey solid;
   height: 20vh;
+}
 
+.month-name{
+  background-color: rgb(107, 107, 245);
+  width: 100%;
+  display: inline-block;
+  color:white;
 }
