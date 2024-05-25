@@ -14,11 +14,13 @@ export default function App() {
 
   const storedLan:string | null = localStorage.getItem('language')
 
+
+
   const lanSelected:Language = storedLan ? Language[Language[parseInt(storedLan)] as keyof typeof Language] : Language.English
   const mn = months[lanSelected]
   
 
-  let actualYear:number = new Date().getFullYear();
+  const [year, setYear] = useState(new Date().getFullYear() + 1);
 
   window.addEventListener("wheel", e => {
     let list = document.getElementById("calendar-container")
@@ -28,18 +30,16 @@ export default function App() {
     }
   });
   
-  
-  const next = async (direction: ScrollDirection) => {
-
+  const next = async (direction: ScrollDirection) => { 
     try {
 
-      actualYear = actualYear + 1
+      setYear(year+1);
 
       setIsLoading(true);
-      const newData = await loadMore(actualYear);
+      const newData = await loadMore(year);
 
       setData((prev) =>
-        direction === "right" ? [...newData, ...prev] : [...prev, ...newData]
+        direction === "right" ? [...prev, ...newData] : [...prev, ...newData]
       );
 
       console.log(data)
