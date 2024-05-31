@@ -14,21 +14,33 @@ export default function App() {
 
   const storedLan: string | null = localStorage.getItem('language')
 
-
-
   const lanSelected: Language = storedLan ? Language[Language[parseInt(storedLan)] as keyof typeof Language] : Language.English
   const mn = months[lanSelected]
 
 
   const [year, setYear] = useState(new Date().getFullYear() + 1);
+  const [yearHead, setyearHead] = useState(2024);
 
   window.addEventListener("wheel", e => {
     let list = document.getElementById("calendar-container")
 
     if (list) {
       e.deltaY === 100 ? list.scrollLeft += 5 : list.scrollLeft -= 5
+
+      if (list.scrollLeft < (366 * 5)) {
+        setyearHead(2024)
+
+      } else {
+        setyearHead(2025)
+      }
     }
+
+
   });
+
+
+
+
 
   const next = async (direction: ScrollDirection) => {
     try {
@@ -41,8 +53,6 @@ export default function App() {
       setData((prev) =>
         direction === "right" ? [...prev, ...newData] : [...prev, ...newData]
       );
-
-      console.log(data)
 
     } finally {
       setIsLoading(false);
@@ -62,9 +72,10 @@ export default function App() {
     <div id="calendar-container" ref={ref} className="flex">
       {data.map((v, i) => (
         <div key={i + "-" + v.year} >
-          <div>
-            {v.year}
+          <div className="yearHead">
+            <div className="text-white bg-indigo-800 text-3xl fixed w-full" > {yearHead}</div>
           </div>
+
 
           <div className="month flex">
             {v.months.map((days, month) => (
@@ -74,7 +85,7 @@ export default function App() {
                   {days.map((day, id_day) => (
                     <div className="day" key={id_day}>
 
-                      <div>{}<br></br>
+                      <div>{ }<br></br>
                         {day}</div>
                       <span>{Math.floor(Math.random() * 6) > 3 ? <div className="event">Evnt</div> : <div className=""> +</div>}</span>
                       <span>{Math.floor(Math.random() * 6) > 3 ? <div className="event">Evnt</div> : <div className=""> +</div>}</span>

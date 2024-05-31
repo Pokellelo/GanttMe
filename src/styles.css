@@ -32,6 +32,10 @@
   filter: brightness(1.3);
 }
 
+.yearHead{
+  height: 36px;
+}
+
 
 #calendar-container{
   overflow: auto;
