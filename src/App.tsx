@@ -7,6 +7,7 @@ import { createItems, loadMore } from "./lib/utils";
 
 import { months } from "./lib/dictionaries";
 import { Language } from "./lib/enums";
+import YearTitle from "./lib/components/YearTitle";
 
 export default function App() {
   const [data, setData] = useState(createItems());
@@ -73,7 +74,8 @@ export default function App() {
       {data.map((v, i) => (
         <div key={i + "-" + v.year} >
           <div className="yearHead">
-            <div className="text-white bg-indigo-800 text-3xl fixed w-full" > {yearHead}</div>
+            <YearTitle year={yearHead}/>
+
           </div>
 
 
