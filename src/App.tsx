@@ -71,14 +71,13 @@ export default function App() {
   return (
 
     <div id="calendar-container" ref={ref} className="flex">
+      <YearTitle year={yearHead} />
+
       {data.map((v, i) => (
         <div key={i + "-" + v.year} >
           <div className="yearHead">
-            <YearTitle year={yearHead}/>
 
           </div>
-
-
           <div className="month flex">
             {v.months.map((days, month) => (
               <div key={month + "-month"}>

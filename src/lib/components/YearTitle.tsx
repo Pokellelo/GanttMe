@@ -1,5 +1,5 @@
 type Params = {
-  year: number
+  year: number | string
 }
 export default function YearTitle(params: Params) {
   return (
